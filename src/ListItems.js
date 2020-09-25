@@ -6,11 +6,18 @@ function ListItems(props) {
     const items = props.items;
     let sayi = 1;
     const listItems = items.map(item => {
+        // console.log((item.key +"  "+ document.activeElement.id));
+        // console.log((item.key == document.activeElement.id));
         item.sayi = sayi;
+        if((item.text.trim()==="") && !(item.key == document.activeElement.id)) {
+            return ;
+        }
         sayi++;
         return <div className="listItem" key={item.key}>
             <p>
-                {item.sayi}.{" "}{item.text}
+                {item.sayi}.{" "} <input type="text" id={item.key} value={item.text} onChange={(e) => {
+                props.editItem(e.target.value, item.key)
+            }}/>
                 <span>
                 <FontAwesomeIcon className="faIcons" icon="ban"
                                  onClick={() => props.deleteItem(item.key)}/>

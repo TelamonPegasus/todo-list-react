@@ -15,3 +15,8 @@
     right: 10px;
     cursor: pointer;
 }
+
+.listItem p input {
+    background-color: transparent;
+    padding: 5px;
+}

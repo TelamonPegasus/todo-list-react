@@ -19,6 +19,18 @@ class App extends React.Component {
         this.handleInput = this.handleInput.bind(this);
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
+        this.editItem = this.editItem.bind(this);
+    }
+
+    handleEvent = (event) => {
+        if (event.type === "click") {
+            let items = this.state.items;
+            items.map(item => {
+                if ((item.text.trim() === "") && !(item.key == document.activeElement.id)) {
+                    this.deleteItem(item);
+                }
+            })
+        }
     }
 
     handleInput(e) {
@@ -54,23 +66,38 @@ class App extends React.Component {
         )
     }
 
+    editItem(text, key) {
+        const items = this.state.items;
+        items.map((item) => {
+            if (item.key === key) {
+                item.text = text;
+            }
+        });
+        this.setState({
+            items: items
+        });
+    }
+
     render() {
         return (
-            <div className="todoWindow">
-                <div className="orta">
-                    <div>Merhaba Burak, Hoşgeldin!</div>
-                    <div>Ne yapılması gerekiyor?</div>
+            <div onClick={this.handleEvent}>
+                <div className="todoWindow">
+                    <div className="orta">
+                        <div>Merhaba Burak, Hoşgeldin!</div>
+                        <div>Ne yapılması gerekiyor?</div>
+                    </div>
+                    <form onSubmit={this.addItem}>
+                        <input type="text"
+                               placeholder="Enter task"
+                               value={this.state.currentItem.text}
+                               onChange={this.handleInput}
+                        />
+                        <button type="submit">Ekle</button>
+                    </form>
+                    <ListItems items={this.state.items}
+                               deleteItem={this.deleteItem}
+                               editItem={this.editItem}/>
                 </div>
-                <form onSubmit={this.addItem}>
-                    <input type="text"
-                           placeholder="Enter task"
-                           value={this.state.currentItem.text}
-                           onChange={this.handleInput}
-                    />
-                    <button type="submit">Ekle</button>
-                </form>
-                <ListItems items={this.state.items}
-                           deleteItem={this.deleteItem}/>
             </div>
         );
     }
