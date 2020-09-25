@@ -1,7 +1,17 @@
 .listItem {
     background-color: #e63c49;
-    padding: 10px;
     color: white;
     border-radius: 10px;
     margin: 10px 10px;
+    position: relative;
+}
+
+.listItem p {
+    padding: 10px;
+}
+
+.listItem p span {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
 }
