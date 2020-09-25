@@ -20,3 +20,65 @@
     background-color: transparent;
     padding: 5px;
 }
+
+.container {
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-right: 30px;
+    top: 3px;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+}
+
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+.checkmark:after {
+    content: "YAPILDI";
+    position: absolute;
+    display: none;
+    font-size: 12px;
+}
+
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    /*left: 0;*/
+    /*top: 0;*/
+    bottom: 10px;
+    right: 7px;
+    /*width: 5px;*/
+    /*height: 10px;*/
+    /*border: solid white;*/
+    /*border-width: 0 3px 3px 0;*/
+    width: 20px;
+    height: 20px;
+    /*-webkit-transform: rotate(45deg);*/
+    /*-ms-transform: rotate(45deg);*/
+    transform: rotate(40deg);
+}
