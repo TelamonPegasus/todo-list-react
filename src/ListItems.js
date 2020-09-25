@@ -1,16 +1,15 @@
 import React from "react";
 import './ListItems.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import FlipMove from 'react-flip-move';
 
 function ListItems(props) {
     const items = props.items;
     let sayi = 1;
     const listItems = items.map(item => {
-        // console.log((item.key +"  "+ document.activeElement.id));
-        // console.log((item.key == document.activeElement.id));
         item.sayi = sayi;
-        if((item.text.trim()==="") && !(item.key == document.activeElement.id)) {
-            return ;
+        if ((item.text.trim() === "") && !(item.key == document.activeElement.id)) {
+            return;
         }
         sayi++;
         return <div className="listItem" key={item.key}>
@@ -26,7 +25,7 @@ function ListItems(props) {
         </div>;
     })
     return (
-        <div>{listItems}</div>
+        <div><FlipMove duration={750}>{listItems}</FlipMove></div>
     )
 }
 
