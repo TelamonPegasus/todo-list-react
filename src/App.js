@@ -21,6 +21,7 @@ class App extends React.Component {
         this.deleteItem = this.deleteItem.bind(this);
         this.editItem = this.editItem.bind(this);
         this.settingState = this.settingState.bind(this);
+        this.yapildiHandler = this.yapildiHandler.bind(this);
     }
 
     handleEvent = (event) => {
@@ -47,6 +48,7 @@ class App extends React.Component {
         e.preventDefault();
         const newItem = this.state.currentItem
         newItem.text = newItem.text.trim();
+        newItem.yapildiMi = false;
         if (newItem.text !== "") {
             const newItems = [...this.state.items, newItem];
             this.setState({
@@ -85,6 +87,19 @@ class App extends React.Component {
         })
     }
 
+    yapildiHandler(e) {
+        let elementId = e.target.parentElement.parentElement.children[1].id;
+        let items = this.state.items;
+        let newItems = items.map(item => {
+            console.log(item.key.toString() , elementId);
+            if (item.key.toString() === elementId) {
+                item.yapildiMi = e.target.checked;
+            }
+            return item;
+        })
+        this.settingState(newItems);
+    }
+
     render() {
         return (
             <div onClick={this.handleEvent}>
@@ -104,7 +119,9 @@ class App extends React.Component {
                     <ListItems items={this.state.items}
                                deleteItem={this.deleteItem}
                                editItem={this.editItem}
-                               settingState={this.settingState}/>
+                               settingState={this.settingState}
+                               yapildiHandler={this.yapildiHandler}
+                    />
                 </div>
             </div>
         );

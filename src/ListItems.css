@@ -68,17 +68,11 @@
 }
 
 .container .checkmark:after {
-    /*left: 0;*/
-    /*top: 0;*/
     bottom: 10px;
     right: 7px;
-    /*width: 5px;*/
-    /*height: 10px;*/
-    /*border: solid white;*/
-    /*border-width: 0 3px 3px 0;*/
     width: 20px;
     height: 20px;
-    /*-webkit-transform: rotate(45deg);*/
-    /*-ms-transform: rotate(45deg);*/
+    -webkit-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
     transform: rotate(40deg);
 }

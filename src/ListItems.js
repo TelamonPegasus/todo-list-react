@@ -31,10 +31,9 @@ function ListItems(props) {
         return <div className="listItem" key={item.key}>
             <p>
                 <label className="container">
-                    <input type="checkbox"/>
-                    <span className="checkmark"></span>
+                    <input type="checkbox" checked={item.yapildiMi} onChange={props.yapildiHandler}/>
+                    <span className="checkmark"/>
                 </label>
-                {/*<input type="checkbox" style={{width:"10px", height:"10px", zoom:1.75, margin: "5px 5px 0px 0px"}}/>*/}
                 {item.sayi}.{" "} <input type="text" id={item.key} value={item.text} onChange={(e) => {
                 props.editItem(e.target.value, item.key)
             }}/>
