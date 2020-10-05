@@ -20,6 +20,7 @@ class App extends React.Component {
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.editItem = this.editItem.bind(this);
+        this.settingState = this.settingState.bind(this);
     }
 
     handleEvent = (event) => {
@@ -78,6 +79,12 @@ class App extends React.Component {
         });
     }
 
+    settingState(items) {
+        this.setState({
+            items: items
+        })
+    }
+
     render() {
         return (
             <div onClick={this.handleEvent}>
@@ -96,7 +103,8 @@ class App extends React.Component {
                     </form>
                     <ListItems items={this.state.items}
                                deleteItem={this.deleteItem}
-                               editItem={this.editItem}/>
+                               editItem={this.editItem}
+                               settingState={this.settingState}/>
                 </div>
             </div>
         );
